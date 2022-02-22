@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  background: #F5F5F5;
+  color: #534D41;
+  justify-content: center;
+  text-align: center;
+}
+
+header {
+  font-size: 20pt;
+  padding: 2rem;
+}
+
+button {
+  background-color: #F5F5F5;
+}
+
+button:hover {
+  background-color: #E76236;
+}
+
+label {
+  padding: 1rem;
+}
+

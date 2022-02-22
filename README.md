@@ -24,11 +24,11 @@ Lab 06 WRRC with Lauren Murphy
 
 ## Time Estimates
 
-Name of feature: ________________________________
+Name of feature: Add a form
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 20 min
 
-Start time: _____
+Start time: 8:45 p.m. CT
 
 Finish time: _____
 
