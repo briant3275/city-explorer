@@ -24,13 +24,14 @@ Lab 06 WRRC with Lauren Murphy
 
 ## Time Estimates
 
-Name of feature: Add a form
+Name of feature: Add a form that renders lat, lon and a map
 
 Estimate of time needed to complete: 20 min
 
-Start time: 8:45 p.m. CT
+Start time: 7:45 p.m. CT
 
-Finish time: _____
+Finish time: 10:45 p.m. CT
 
-Actual time needed to complete: _____
+Actual time needed to complete: 3 hours
+
 ## Credit and Collaborations
