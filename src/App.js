@@ -1,9 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Button, Container, Card, Alert } from 'react-bootstrap';
+import { Form, Button, Container, Card, Alert, ListGroup } from 'react-bootstrap';
 import axios from 'axios';
 import './App.css';
-import Forecast from './Forecast';
+// import Forecast from './Forecast';
+
+const SERVER = process.env.REACT_APP_SERVER
 
 class App extends React.Component {
   constructor(props) {
@@ -14,8 +16,8 @@ class App extends React.Component {
       renderError: false,
       errorMessage: '',
       searchQuery: '',
-      cityData: {},
-      showMap: false
+      showMap: false,
+      weatherData: []
     }
   }
 
@@ -43,16 +45,38 @@ class App extends React.Component {
       })
     }
 
-    // console.log(cityResults.data[0]);
+    console.log(cityResults.data[0]);
     this.setState({
       cityData: cityResults.data[0],
       displayCityData: true
     })
+    this.getWeather()
+  }
+
+  getWeather = async () => {
+    try {
+      let results = await axios.get(`${SERVER}/weather?cityName=${this.state.searchQuery}`)
+      console.log('weather data', results.data);
+      this.setState({
+        weatherData: results.data,
+        renderWeather: true,
+      })
+    } catch (error) {
+      this.setState({
+        weatherError: true,
+        weatherErrorMessage: `An Error Occured With Weather Data: ${error.response.status}, ${error.response.data}`
+      })
+
+    }
   }
 
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
+
+    let dailyForecasts = this.state.weatherData.map((forecast, index) => (
+      <ListGroup.Item key={index}>{forecast.date}: {forecast.description}</ListGroup.Item>
+    ))
 
     return (
       <>
@@ -72,18 +96,22 @@ class App extends React.Component {
           </Container>
 
           {this.state.displayCityData &&
-            <Card style={{ width: '50rem' }} className="cityCard">
+            <Card className="cityCard">
               <Card.Title>{this.state.cityData.display_name}</Card.Title>
               <Card.Img variant="top" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_ACCESS_TOKEN}&zoom=13&center=${this.state.cityData.lat},${this.state.cityData.lon}`} alt="placehold"
               />
               <Card.Text>Lat: {this.state.cityData.lat}, Lon: {this.state.cityData.lon}</Card.Text>
             </Card>
           }
-          <Container>
-            <Forecast />
-          </Container>
 
           {
+            this.state.renderWeather &&
+            <ListGroup className="m-md-auto w-50">
+              {dailyForecasts}
+            </ListGroup>
+          }
+
+          {/* {
             this.state.error ?
               <div className='cardHolder'>
                 <Alert>
@@ -93,11 +121,11 @@ class App extends React.Component {
               </div> :
               this.state.currentCity !== '' ?
                 <div className='cardHolder'>
-                  <cityResults title={this.state.currentCity} lat={this.state.currentLat} lon={this.state.currentLon} />
+                  title={this.state.currentCity} lat={this.state.currentLat} lon={this.state.currentLon}
                 </div>
                 :
                 <></>
-          }
+          } */}
 
         </main>
       </>
