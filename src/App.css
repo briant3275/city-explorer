@@ -61,3 +61,8 @@ label {
   padding: 1rem;
 }
 
+.cityCard {
+  width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}

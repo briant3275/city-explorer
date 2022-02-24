@@ -22,15 +22,32 @@
 Lab 06 WRRC with Lauren Murphy
 ![Data Flow](WRRC-lab-6.png)
 
+lab 07 WRRC with Andres Mills Gallego
+![Data Flow](WRRC2-22.png)
+
+lab 07 WRRC with REy Mercado
+![Data Flow](WRRC2-23.png)
+
 ## Time Estimates
 
-Name of feature: Add a form
+Name of feature: Add a form that renders lat, lon and a map
 
 Estimate of time needed to complete: 20 min
 
-Start time: 8:45 p.m. CT
+Start time: 7:45 p.m. CT
 
-Finish time: _____
+Finish time: 10:45 p.m. CT
 
-Actual time needed to complete: _____
+Actual time needed to complete: 3 hours
+
+
+Name of feature: Set up server and render weather data
+
+Estimate of time needed to complete: 20 min
+
+Start time: 3:00 p.m. CT
+
+Finish time: 11:00 p.m. CT
+
+Actual time needed to complete: 7 to 8 hours
 ## Credit and Collaborations
