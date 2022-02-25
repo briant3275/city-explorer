@@ -21,17 +21,17 @@ class App extends React.Component {
     }
   }
 
-
-
+  
+  
   handleInput = e => this.setState({ searchQuery: e.target.value, })
-
-
+  
+  
   getCityInfo = async (e) => {
     e.preventDefault();
-
+    
     let url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_ACCESS_TOKEN}&q=${this.state.searchQuery}&format=json`;
-
-
+    
+    
     let cityResults = {};
     try {
       cityResults = await axios.get(url);
@@ -41,30 +41,51 @@ class App extends React.Component {
     } catch (error) {
       this.setState({
         error: true,
-        errorMessage: `An error has occurred: ${error.response.status}, ${error.response.data.error}`
+        errorMessage: `An error has occurred:  ${error.response.data.error}`
       })
     }
-
-    console.log(cityResults.data[0]);
+    console.log(cityResults);
+    
     this.setState({
       cityData: cityResults.data[0],
       displayCityData: true
     })
-    this.getWeather()
+    console.log(this.state.cityData);
+    this.getWeather();
+    this.getMovies();
   }
 
   getWeather = async () => {
     try {
-      let results = await axios.get(`${SERVER}/weather?cityName=${this.state.searchQuery}`)
-      console.log('weather data', results.data);
+
+      let weatherResults = await axios.get(`${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.city}&lat=${this.state.cityData.lat}&lon=${this.state.cityData.lon}`)
+      console.log('weather data', weatherResults.data);
       this.setState({
-        weatherData: results.data,
+        weatherData: weatherResults.data,
         renderWeather: true,
       })
     } catch (error) {
       this.setState({
         weatherError: true,
-        weatherErrorMessage: `An Error Occured With Weather Data: ${error.response.status}, ${error.response.data}`
+        weatherErrorMessage: `An Error Occured With Weather Data: ${error.response.status}`
+      })
+
+    }
+  }
+
+  getMovies = async () => {
+    try {
+
+      let movieResults = await axios.get(`${process.env.REACT_APP_SERVER}/movies?searchQuery=${this.state.cityData.display_name}`)
+      console.log('movie data', movieResults.data);
+      this.setState({
+        movieData: movieResults.data,
+        renderMovies: true,
+      })
+    } catch (error) {
+      this.setState({
+        movieError: true,
+        movieErrorMessage: `An Error Occured With Movie Data: `
       })
 
     }
@@ -106,6 +127,13 @@ class App extends React.Component {
 
           {
             this.state.renderWeather &&
+            <ListGroup className="m-md-auto w-50">
+              {dailyForecasts}
+            </ListGroup>
+          }
+
+          {
+            this.state.renderMovies &&
             <ListGroup className="m-md-auto w-50">
               {dailyForecasts}
             </ListGroup>
