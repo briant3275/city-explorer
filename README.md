@@ -22,11 +22,17 @@
 Lab 06 WRRC with Lauren Murphy
 ![Data Flow](WRRC-lab-6.png)
 
-lab 07 WRRC with Andres Mills Gallego
+Lab 07 WRRC with Andres Mills Gallego
 ![Data Flow](WRRC2-22.png)
 
-lab 07 WRRC with REy Mercado
+Lab 08 WRRC with Rey Mercado
 ![Data Flow](WRRC2-23.png)
+
+Lab 09 WRRC with Matt Rangel
+![Data Flow](WRRC2-24.png)
+
+Lab 10 WRRC with Brady Camp
+![Data Flow](WRRC2-25.png)
 
 ## Time Estimates
 
@@ -43,11 +49,33 @@ Actual time needed to complete: 3 hours
 
 Name of feature: Set up server and render weather data
 
-Estimate of time needed to complete: 20 min
+Estimate of time needed to complete: 2 hours
 
 Start time: 3:00 p.m. CT
 
 Finish time: 11:00 p.m. CT
 
 Actual time needed to complete: 7 to 8 hours
+
+
+Name of feature: render movie data
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 4:00 p.m. CT
+
+Finish time: 9:00 p.m. CT
+
+Actual time needed to complete: 5 hours
+
+
+Name of feature: Componentize
+
+Estimate of time needed to complete: 2 hour
+
+Start time: 8:00 p.m. CT
+
+Finish time: 11:00 p.m. CT
+
+Actual time needed to complete: 3 hours
 ## Credit and Collaborations
