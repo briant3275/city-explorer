@@ -11,7 +11,7 @@ import MovieListings from './MovieListings';
 
 // const SERVER = process.env.REACT_APP_SERVER
 
-class App extends React.Component {
+class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -96,7 +96,7 @@ class App extends React.Component {
       let movieResults = await axios.get(
         `${process.env.REACT_APP_SERVER}/movies?cityName=${this.state.city}`
         );
-      // console.log('movie data', movieResults.data);
+      console.log('movie data', movieResults.data);
       this.setState({
         movieData: movieResults.data,
         renderMovies: true,
@@ -127,7 +127,7 @@ class App extends React.Component {
           <ExploreForm getCityInfo={this.getCityInfo} handleInput={this.handleInput}/>
 
           {this.state.displayCityData &&
-            <CityInfo currentCity={this.state.currentCity} currentLat={this.state.currentLat} currentLon={this.state.currentLon} />
+            <CityInfo currentCity={this.state.currentCity} currentLat={this.state.currentLat} currentLon={this.state.currentLon} error={this.state.error} errorMessage={this.state.errorMessage} cityData={this.state.cityData}/>
           }
 
           {
@@ -150,4 +150,4 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+export default Main;
